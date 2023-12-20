@@ -137,6 +137,6 @@ function padString(inputString, minLength, padding) {
 //   }
 // }
 
-function checkStringLength(inputString, maxLength) {
-  return inputString.length <= maxLength;
-}
+function checkStringLength (inputString, maxLength)
+  inputString.length <= maxLength;
+
