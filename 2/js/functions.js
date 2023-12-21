@@ -1,30 +1,21 @@
 
 // Функция ради функции для проверки подключения js
-function someFunction(arg1='', arg2=0) {
-  if (arg1.length<=arg2){
-    return true;
-  } else {
-    return false;
-  }
+const getFunction = (arg1, arg2) => { return arg1.length <= arg2;
 }
 //eslint-disable-next-line;
 console.log (someFunction('1234567',8));
 //eslint-disable-next-line;
 console.log (someFunction('1234567890',8));
 
-function sum (a,b) {
+function getSum (a,b) {
   return a+b;
 }
 console.log(sum(1,2));
 
 // Палиндром
-function Palindrome (str) {
-  if (str === str.split('').reverse().join('')) {
-    return true;
-  } else {
-    return false;
-  }
-}
+function getPalindrome (str) {
+  return str === str.split('').reverse().join('');
+
 console.log(Palindrome('racecar'));
 
 function palindromeTwo (str) {
@@ -78,22 +69,7 @@ function padString(inputString, minLength, padding) {
     return paddedString;
   }
 
-// Функция padString работает следующим образом:
-// Сначала функция проверяет длину исходной строки (inputString)
-// с минимальной длиной (minLength). Если длина исходной строки больше или
-// равна минимальной длине, функция просто возвращает исходную строку без изменений.
-//  Если длина исходной строки меньше минимальной длины, вычисляется длина
-// "добивки" (paddingLength) путем вычитания длины исходной строки из минимальной
-// длины.
-//   Затем функция использует метод slice() для обрезания строки с добавочными
-// символами (padding) таким образом, чтобы оставить только последние paddingLength
-// символов.
-//   Далее функция объединяет обрезанную строку с добавочными символами
-// со строкой (inputString) и возвращает полученную дополненную строку.
-//   Таким образом, функция padString добавляет символы в начало исходной
-// строки до достижения заданной минимальной длины. Если исходная строка уже
-// имеет достаточную длину, функция возвращает ее без изменений. Если "добивка"
-// слишком длинная, она обрезается, чтобы соответствовать заданной длине.
+
 
   function padStart(inputString, minLength, padding) {
     if (inputString.length >= minLength) {
@@ -107,26 +83,6 @@ function padString(inputString, minLength, padding) {
     return paddedString;
   }
 
-// Функция padStart работает следующим образом:
-
-// Сначала функция проверяет длину исходной строки (inputString)
-// с минимальной длиной (minLength). Если длина исходной строки больше или
-// равна минимальной длине, функция просто возвращает исходную строку без изменений.
-// Если длина исходной строки меньше минимальной длины, вычисляется длина "добивки"
-// (paddingLength) путем вычитания длины исходной строки из минимальной длины.
-// Затем функция вычисляет количество повторений "добивки" (repeatCount) путем деления
-// длины "добивки" на длину строки с добавочными символами (padding) и округления вверх
-//  до ближайшего целого числа. Это позволяет определить, сколько раз нужно повторить
-//  "добивку", чтобы достичь нужной длины.
-// Далее функция использует метод repeat() для повторения строки с добавочными символами
-//  (padding) нужное количество раз (repeatCount). Затем с помощью метода slice()
-//  обрезает повторенную "добивку" до нужной длины (paddingLength).
-// Наконец, функция объединяет обрезанную "добивку" со строкой (inputString) и
-// возвращает полученную дополненную строку.
-// Таким образом, функция padStart добавляет символы в начало исходной строки до
-//  достижения заданной минимальной длины. Если исходная строка уже имеет достаточную
-//   длину, функция возвращает ее без изменений. Если "добивка" слишком длинная, она
-//    обрезается для соответствия заданной длине.
 
 
 // function checkStringLength(inputString, maxLength) {
@@ -137,6 +93,47 @@ function padString(inputString, minLength, padding) {
 //   }
 // }
 
-function checkStringLength(inputString, maxLength) {
-  return inputString.length <= maxLength;
+// 1. Проверка длины строки в сокращении
+const checkStringLength = (inputString, maxLength)=>inputString.length <= maxLength;
+
+// 2.Палиндром из ретроспективы
+const isPalindrom =(String)=>{
+  const tempString = String
+  .toLowerCase();
+  .replaceALL(' ','');
+  let reverseString = ('');
+  for (let i=tempString.length-1; i>=0; i--){
+    reverseString += tempString[i];
+  }
+ return tempString === reverseString;
 }
+
+// 3. Функция, которая принимает строку, извлекает содержащиеся в ней цифры
+const extractNumber = (str)=>{
+  let result = '';
+  if ()typeof String === 'number'){
+    result = String;
+    for (let i = 0; i < result.length; i++){
+      if (Number.isParseInt(String.at (i), 10)){
+        result +String.at(i);
+      }
+    }
+    return parseInt(result, 10);
+}
+
+const myPadStart = (inputString, minLength, padding) => {
+  const actualPadding = minLength - inputString.length;
+
+  if (actualPadding <= 0) {
+    return inputString;
+  }
+  return padding.slice (0, actualPadding%padding.length) + padding.repeat(actualPadding/paddingLength) + string;
+}
+
+//Используем тернанрную функцию
+const myPadStart = (inputString, minLength, padding) => {
+  const actualPadding = minLength - inputString.length;
+
+  return actualPadding <= 0 ? inputString : padding.slice (0, actualPadding%padding.length) + padding.repeat(actualPadding/paddingLength) + string;
+}
+
